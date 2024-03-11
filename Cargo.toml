@@ -1,0 +1,25 @@
+[package]
+name = "nal-pola"
+version = "0.1.0"
+edition = "2021"
+description = "A package providing "
+license = "MIT"
+repository = "https://github.com/j-h-stevens/nal-pola"
+documentation = "https://docs.rs/nal-pola"
+
+[dependencies]
+polars = "0.38.2"
+num-traits = "0.2.18"
+nalgebra = "0.32.4"
+
+[dev-dependencies]
+criterion = "0.5.1"
+approx = "0.5.1"
+
+[[bench]]
+name = "pola2"
+path = "benches/pola2.rs"
+harness = false
+
+[lib]
+doctest = true
