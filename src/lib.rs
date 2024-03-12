@@ -14,9 +14,9 @@ Simply add the following to your `Cargo.toml` file:
 ```ignore
 [dependencies]
 // TODO: replace the * by the latest version.
-nal_stats = "*"
+nal-stats = "*"
 ```
-Most useful functionalities of **nal-pola** are grouped in the root module `nal-pola::`.
+Most useful functionalities of **nal-pola** are grouped in the root module `nal_pola::`.
 
 However, the recommended way to use **nal-pola** is to import types and traits
 explicitly.

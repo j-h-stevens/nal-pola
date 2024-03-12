@@ -2,7 +2,7 @@ use nalgebra::{DMatrix, DVector, Scalar};
 use num_traits::NumCast;
 use polars::prelude::*;
 
-/// Trait for converting a Polars Series to a nalgebra vector (DVector<N>).
+/// Trait for converting a Polars Series to a nalgebra vector (`DMatrix<N>`).
 pub trait Series2Nal {
     fn to_nal_vec<N>(&self) -> PolarsResult<DVector<N>>
     where
@@ -33,8 +33,8 @@ impl Series2Nal for Series {
                     None => NumCast::from(f64::NAN).unwrap(),
                 },
                 _ => {
-                    let f64_val = self.f64().unwrap().get(i).unwrap_or(f64::NAN); // Handle potential NaN values.
-                    NumCast::from(f64_val).unwrap() // Safely unwrap since N is constrained to types that can be cast from f64.
+                    let f64_val = self.f64().unwrap().get(i).unwrap_or(f64::NAN);
+                    NumCast::from(f64_val).unwrap()
                 }
             };
             data.push(val);
@@ -44,7 +44,7 @@ impl Series2Nal for Series {
     }
 }
 
-/// Trait for converting a Polars DataFrame to a nalgebra matrix (DMatrix<N>).
+/// Trait for converting a Polars DataFrame to a nalgebra matrix (`DMatrix<N>`).
 pub trait Df2Nal {
     fn to_nal_mat<N>(&self) -> PolarsResult<DMatrix<N>>
     where
